@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 template <typename Window, typename Controller>
 class Widget {
@@ -62,6 +63,11 @@ private:
     void doSomething(Int2Type<false> value) {std::cout << "False" << std::endl;}
 };
 
+class Widget {
+public:
+    template <typename T> Widget() {}
+};
+
 template <typename T, typename U>
 T *Create(const U&arg)
 {
@@ -70,25 +76,7 @@ T *Create(const U&arg)
 
 int main(int argc, char **argv)
 {
-    Widget<int, int> intWidget;
-    intWidget.print();
-
-    Widget<FooWindow, int> fooIntWidget;
-    fooIntWidget.print();
-
-    Widget<FooWindow, FooController> fooWidget;
-    fooWidget.print();
-
-    Widget<BarWindow, int> barWidget;
-    barWidget.print();
-
-    Widget<Button<int>, int> buttonWidget;
-    buttonWidget.print();
-
-    CompileTimeDispatch<int, true> iTrue;
-    iTrue.doSomething();
-
-    CompileTimeDispatch<int, false> iFalse;
-    iFalse.doSomething();
+    auto iWidget = Create<Widget>(1);
+    auto strWidget = Create<Widget>(std::string());
     return 0;
 }
