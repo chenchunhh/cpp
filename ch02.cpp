@@ -18,20 +18,32 @@ private:
     void doSomething(Int2Type<false> value) {std::cout << "False" << std::endl;}
 };
 
+template <typename T>
+class Type2TYpe {
+using type = T;
+};
+
 class Widget {
 public:
     template <typename T> Widget(const T&) {}
 };
 
 template <typename T, typename U>
-T *Create(const U&arg, const T&)
+T *Create(const U&arg, Type2Type<T>)
 {
     return new T(arg);
 }
 
+template <typename U>
+Widget *Create(const U&arg, Type2Type<Widget>)
+{
+    std::cout << "Wdiget Create" << std::endl;;
+    return NULL;
+}
+
 int main(int argc, char **argv)
 {
-    auto iWidget = Create<Widget>(1, Widget(1));
-    auto strWidget = Create<Widget>(std::string(), Widget(1));
+    auto iWidget = Create(1, Type2Type<Widget>());
+    auto iInt = Create(1, Type2Type<int>());
     return 0;
 }
