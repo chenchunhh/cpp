@@ -26,7 +26,7 @@ public:
 template <typename T, typename U>
 T *Create(const U&arg, const T&)
 {
-
+    return new T(arg);
 }
 
 int main(int argc, char **argv)
