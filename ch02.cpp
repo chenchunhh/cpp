@@ -19,7 +19,7 @@ private:
 };
 
 template <typename T>
-class Type2TYpe {
+class Type2Type {
 using type = T;
 };
 
