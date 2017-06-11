@@ -1,2 +1,0 @@
-Program("test", ["test.cpp"])
-Program("ch02", ["ch02.cpp"])
