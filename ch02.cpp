@@ -24,14 +24,14 @@ public:
 };
 
 template <typename T, typename U>
-T *Create(const U&arg)
+T *Create(const U&arg, const T&)
 {
-    return new T(arg);
+
 }
 
 int main(int argc, char **argv)
 {
-    auto iWidget = Create<Widget>(1);
-    auto strWidget = Create<Widget>(std::string());
+    auto iWidget = Create<Widget>(1, Widget());
+    auto strWidget = Create<Widget>(std::string(), Widget());
     return 0;
 }
