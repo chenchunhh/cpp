@@ -62,6 +62,11 @@ private:
     void doSomething(Int2Type<false> value) {std::cout << "False" << std::endl;}
 };
 
+template <typename T, typename U>
+T *Create(const U&arg)
+{
+    return new T(arg);
+}
 
 int main(int argc, char **argv)
 {
