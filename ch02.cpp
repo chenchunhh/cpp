@@ -34,6 +34,22 @@ public:
     void print() {std::cout << "Button print" << std::endl;}
 };
 
+void Func()
+{
+    class Local {
+    public:
+        void print();
+    };
+
+    Local local;
+    local.print();
+}
+
+void Func::Local::print()
+{
+    std::cout << __func__ << std::endl;
+}
+
 int main(int argc, char **argv)
 {
     Widget<int, int> intWidget;
