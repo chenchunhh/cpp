@@ -31,7 +31,7 @@ T *Create(const U&arg, const T&)
 
 int main(int argc, char **argv)
 {
-    auto iWidget = Create<Widget>(1, Widget());
-    auto strWidget = Create<Widget>(std::string(), Widget());
+    auto iWidget = Create<Widget>(1, Widget(1));
+    auto strWidget = Create<Widget>(std::string(), Widget(1));
     return 0;
 }
