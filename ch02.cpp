@@ -24,6 +24,16 @@ public:
     void print() {std::cout << "Bar print" << std::endl;}
 };
 
+template <typename ButtonArg>
+class Button;
+
+template <typename ButtonArg, typename Controller>
+class Widget<Button<ButtonArg>, Controller>
+{
+public:
+    void print() {std::cout << "Button print" << std::endl;}
+};
+
 int main(int argc, char **argv)
 {
     Widget<int, int> intWidget;
@@ -37,5 +47,8 @@ int main(int argc, char **argv)
 
     Widget<BarWindow, int> barWidget;
     barWidget.print();
+    
+    Widget<Button<int>, int> buttonWidget;
+    buttonWidget.print();
     return 0;
 }
