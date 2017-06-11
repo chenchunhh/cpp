@@ -38,17 +38,13 @@ void Func()
 {
     class Local {
     public:
-        void print();
+        void print() {std::cout << __func__ << std::endl;};
     };
 
     Local local;
     local.print();
 }
 
-void Func::Local::print()
-{
-    std::cout << __func__ << std::endl;
-}
 
 int main(int argc, char **argv)
 {
@@ -63,7 +59,7 @@ int main(int argc, char **argv)
 
     Widget<BarWindow, int> barWidget;
     barWidget.print();
-    
+
     Widget<Button<int>, int> buttonWidget;
     buttonWidget.print();
     return 0;
