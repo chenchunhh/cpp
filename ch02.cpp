@@ -45,6 +45,23 @@ void Func()
     local.print();
 }
 
+template <int v>
+class Int2Type {
+public:
+    static constexpr int value = v;
+};
+
+template <typename T, bool isInt>
+class CompileTimeDispatch {
+public:
+    void doSomething() {
+        doSomething(Int2Type<isInt>());
+    }
+private:
+    void doSomething(Int2Type<true> value) {std::cout << "True" << std::endl;}
+    void doSomething(Int2Type<false> value) {std::cout << "False" << std::endl;}
+};
+
 
 int main(int argc, char **argv)
 {
@@ -62,5 +79,11 @@ int main(int argc, char **argv)
 
     Widget<Button<int>, int> buttonWidget;
     buttonWidget.print();
+
+    CompileTimeDispatch<int, true> iTrue;
+    iTrue.doSomething();
+
+    CompileTimeDispatch<int, false> iFalse;
+    iFalse.doSomething();
     return 0;
 }
