@@ -45,17 +45,31 @@ template <typename T, typename U>
 class Conversion {
 private:
     typedef char Small;
-    struct big {char data[2]};
+    struct Big {char data[2];};
     static Small Test(U);
     static Big Test(...);
     static T makeT();
 public:
-    static constexpr int value == (sizeof(Test(makeT()) == sizeof(Small)));
+    static constexpr int value = (sizeof(Test(makeT())) == sizeof(Small));
 };
+
+class FooBase {
+};
+
+class Foo : FooBase {
+};
+
+class Bar {
+};
+
 
 int main(int argc, char **argv)
 {
     std::cout << Conversion<int, long>::value << std::endl;
     std::cout << Conversion<float, int>::value << std::endl;
+    std::cout << Conversion<FooBase, Foo>::value << std::endl;
+    std::cout << Conversion<Foo, FooBase>::value << std::endl;
+    std::cout << Conversion<Bar, FooBase>::value << std::endl;
+    std::cout << Conversion<FooBase, Bar>::value << std::endl;
     return 0;
 }
