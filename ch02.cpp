@@ -41,9 +41,21 @@ Widget *Create(const U&arg, Type2Type<Widget>)
     return NULL;
 }
 
+template <typename T, typename U>
+class Conversion {
+private:
+    typedef char Small;
+    struct big {char data[2]};
+    static Small Test(U);
+    static Big Test(...);
+    static T makeT();
+public:
+    static constexpr int value == (sizeof(Test(makeT()) == sizeof(Small)));
+};
+
 int main(int argc, char **argv)
 {
-    auto iWidget = Create(1, Type2Type<Widget>());
-    auto iInt = Create(1, Type2Type<int>());
+    std::cout << Conversion<int, long>::value << std::endl;
+    std::cout << Conversion<float, int>::value << std::endl;
     return 0;
 }
